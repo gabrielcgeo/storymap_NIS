@@ -82,12 +82,82 @@ $(window).on('load', function() {
   /**
    * Loads the basemap and adds it to the map
    */
-  function addBaseMap() {
-    var basemap = trySetting('_tileProvider', 'Stamen.TonerLite');
-    L.tileLayer.provider(basemap, {
-      maxZoom: 18
-    }).addTo(map);
+  ///inicio da visualização do basemaps
+function addBaseMap() {
+  // Basemaps array with name and tile url
+  var basemaps = [
+    {
+      name: 'Google Hybrid',
+      url: 'https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}'
+      
+    },
+    {
+      name: 'Google Terrain',
+      url: 'https://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}'
+    },
+    {
+      name: 'Google Maps',
+      url:'https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}'
+    },
+    {
+      name: 'Esri Terrain',
+      url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}'
+    },
+    {
+      name: 'Google Satellite',
+      url: 'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
+      active: true // Add active property to set this layer as active
+    },
+  ];
+
+  // Create an object to hold baselayer name and layer
+  var baseLayers = {};
+
+  // Loop through all basemaps and add them to the base layer object
+  for (var i = 0; i < basemaps.length; i++) {
+    var options = {
+      maxZoom: 18,
+      attribution: '<a href="https://www.mapbox.com/about/maps/">© Mapbox</a>, '+
+                   '<a href="https://www.openstreetmap.org/about/">© OpenStreetMap</a>, '+
+                   '<a href="https://www.mapbox.com/map-feedback/">Improve this map</a>'
+    };
+    
+    // If active property is set, add it to the map and set it as active
+    if (basemaps[i].active) {
+      baseLayers[basemaps[i].name] = L.tileLayer(basemaps[i].url, options).addTo(map);
+    } else {
+      baseLayers[basemaps[i].name] = L.tileLayer(basemaps[i].url, options);
+    }
   }
+
+  // Create the control object and add it to the map
+  L.control.layers(baseLayers).addTo(map);
+}
+
+
+  
+////final do visualizador de layer
+
+
+
+///escala inicio
+
+
+// Cria o objeto do controle da barra de escala
+var scale = L.control.scale({position: 'bottomright'});
+
+// Adiciona o controle ao mapa
+scale.addTo(map);
+
+
+
+///escala final
+///caixa de pesquisa inico
+
+// Adicionando uma SearchBox 
+
+///caixa de pesquisa final
+
 
   function initMap(options, chapters) {
     createDocumentSettings(options);
@@ -111,11 +181,15 @@ $(window).on('load', function() {
     addBaseMap();
 
     // Add zoom controls if needed
-    if (getSetting('_zoomControls') !== 'off') {
+    if (getSetting('_zoomControls') !== 'on') {
       L.control.zoom({
         position: getSetting('_zoomControls')
       }).addTo(map);
     }
+    
+    // Enable scrollWheelZoom
+    map.scrollWheelZoom.enable();
+    
 
     var markers = [];
 
@@ -409,7 +483,7 @@ $(window).on('load', function() {
         color: " + trySetting('_narrativeLink', 'blue') + " \
       }\
       .in-focus {\
-        background-color: " + trySetting('_narrativeActive', '#f0f0f0') + " \
+        background-color: " + trySetting('_narrativeActive', '#72b6f2') + " \
       }")
       .appendTo("head");
 
