@@ -476,7 +476,7 @@ scale.addTo(map);
       .html("\
       #narration, #title {\
         background-color: " + trySetting('_narrativeBackground', 'white') + "; \
-        color: " + trySetting('_narrativeText', 'black') + "; \
+        color: " + trySetting('_narrativeText', 'white') + "; \
       }\
       a, a:visited, a:hover {\
         color: " + trySetting('_narrativeLink', 'blue') + " \
