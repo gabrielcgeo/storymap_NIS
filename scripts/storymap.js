@@ -87,6 +87,11 @@ function addBaseMap() {
   // Basemaps array with name and tile url
   var basemaps = [
     {
+      name: 'Google Satellite',
+      url: 'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
+      active: true // Add active property to set this layer as active
+    },
+    {
       name: 'Google Hybrid',
       url: 'https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}'
       
@@ -103,11 +108,7 @@ function addBaseMap() {
       name: 'Esri Terrain',
       url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}'
     },
-    {
-      name: 'Google Satellite',
-      url: 'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
-      active: true // Add active property to set this layer as active
-    },
+   
   ];
 
   // Create an object to hold baselayer name and layer
@@ -125,9 +126,7 @@ function addBaseMap() {
     // If active property is set, add it to the map and set it as active
     if (basemaps[i].active) {
       baseLayers[basemaps[i].name] = L.tileLayer(basemaps[i].url, options).addTo(map);
-    } else {
-      baseLayers[basemaps[i].name] = L.tileLayer(basemaps[i].url, options);
-    }
+    } 
   }
 
   // Create the control object and add it to the map
@@ -483,7 +482,7 @@ scale.addTo(map);
         color: " + trySetting('_narrativeLink', 'blue') + " \
       }\
       .in-focus {\
-        background-color: " + trySetting('_narrativeActive', '#72b6f2') + " \
+        background-color: " + trySetting('_narrativeActive', '##0D0D0D') + " \
       }")
       .appendTo("head");
 
