@@ -470,7 +470,7 @@ scale.addTo(map);
       </div> \
     ");
 
-    /* Generate a CSS sheet with cosmetic changes */
+    /* Generate a CSS sheet with cosmetic changes */ 
     $("<style>")
       .prop("type", "text/css")
       .html("\
