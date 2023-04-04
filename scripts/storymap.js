@@ -475,14 +475,14 @@ scale.addTo(map);
       .prop("type", "text/css")
       .html("\
       #narration, #title {\
-        background-color: " + trySetting('_narrativeBackground', 'white') + "; \
-        color: " + trySetting('_narrativeText', 'white') + "; \
+        background-color: " + trySetting('_narrativeBackground', '#F0F0F0') + "; \
+        color: " + trySetting('_narrativeText', 'black') + "; \
       }\
       a, a:visited, a:hover {\
         color: " + trySetting('_narrativeLink', 'blue') + " \
       }\
       .in-focus {\
-        background-color: " + trySetting('_narrativeActive', '##0D0D0D') + " \
+        background-color: " + trySetting('_narrativeActive', '#4193A6') + " \
       }")
       .appendTo("head");
 
