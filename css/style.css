@@ -112,9 +112,9 @@ a.source:visited {
 }
 
 .description {
-  margin: 20px;
-  text-align: left;
-  font-size: 11pt;
+  margin: 25px;
+  text-align: justify;
+  font-size: 12pt;
   padding: 20px;
 }
 
@@ -166,11 +166,38 @@ a.source:visited {
 /* Storymap title & subtitle */
 h1 {
   margin: 0;
-  font-size: 1.5em;
+  font-size: 2.3em;
 }
 
 h2 {
   margin: 0;
-  font-size: 1.1em;
+  font-size: 1.5em;
   font-weight: normal;
 }
+#collapse-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  z-index: 9999;
+}
+
+#map-container.collapsed #info-container {
+  display: none;
+}
+
+#map-container.collapsed #collapse-info {
+  right: unset;
+  left: 10px;
+  transform: rotate(-90deg);
+
+}
+
