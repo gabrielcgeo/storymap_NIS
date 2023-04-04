@@ -126,7 +126,6 @@ function addBaseMap() {
     // If active property is set, add it to the map and set it as active
     if (basemaps[i].active) {
       baseLayers[basemaps[i].name] = L.tileLayer(basemaps[i].url, options);
-    } else {
       baseLayers[basemaps[i].name] = L.tileLayer(basemaps[i].url, options).addTo(map);
     } 
   }
