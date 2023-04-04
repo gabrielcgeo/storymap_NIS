@@ -82,7 +82,7 @@ $(window).on('load', function() {
   /**
    * Loads the basemap and adds it to the map
    */
-  ///inicio da visualização do basemaps
+  ///inicio da visualizaÃ§Ã£o do basemaps
 function addBaseMap() {
   // Basemaps array with name and tile url
   var basemaps = [
@@ -118,8 +118,8 @@ function addBaseMap() {
   for (var i = 0; i < basemaps.length; i++) {
     var options = {
       maxZoom: 18,
-      attribution: '<a href="https://www.mapbox.com/about/maps/">© Mapbox</a>, '+
-                   '<a href="https://www.openstreetmap.org/about/">© OpenStreetMap</a>, '+
+      attribution: '<a href="https://www.mapbox.com/about/maps/">Â© Mapbox</a>, '+
+                   '<a href="https://www.openstreetmap.org/about/">Â© OpenStreetMap</a>, '+
                    '<a href="https://www.mapbox.com/map-feedback/">Improve this map</a>'
     };
     
