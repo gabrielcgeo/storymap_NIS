@@ -321,7 +321,7 @@ scale.addTo(map);
         mediaContainer = $('<div></div', {
           class: mediaType + '-container'
         }).append(media).after(source);
-      }
+      } 
 
       container
         .append('<p class="chapter-header">' + c['Chapter'] + '</p>')
