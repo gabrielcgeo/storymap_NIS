@@ -79,7 +79,30 @@ $(window).on('load', function() {
     return s;
   }
 
-  /**
+  
+  ///caixa de pesquisa final
+
+
+  function initMap(options, chapters) {
+    createDocumentSettings(options);
+
+    var chapterContainerMargin = 70;
+
+    document.title = getSetting('_mapTitle');
+    $('#header').append('<h1>' + (getSetting('_mapTitle') || '') + '</h1>');
+    $('#header').append('<h2>' + (getSetting('_mapSubtitle') || '') + '</h2>');
+
+    // Add logo
+    if (getSetting('_mapLogo')) {
+      $('#logo').append('<img src="' + getSetting('_mapLogo') + '" />');
+      $('#top').css('height', '60px');
+    } else {
+      $('#logo').css('display', 'none');
+      $('#header').css('padding-top', '25px');
+    }
+
+    // Load tiles
+    addBaseMap();
    * Loads the basemap and adds it to the map
    */
   ///inicio da visualização do basemaps
@@ -156,29 +179,7 @@ scale.addTo(map);
 
 // Adicionando uma SearchBox 
 
-///caixa de pesquisa final
 
-
-  function initMap(options, chapters) {
-    createDocumentSettings(options);
-
-    var chapterContainerMargin = 70;
-
-    document.title = getSetting('_mapTitle');
-    $('#header').append('<h1>' + (getSetting('_mapTitle') || '') + '</h1>');
-    $('#header').append('<h2>' + (getSetting('_mapSubtitle') || '') + '</h2>');
-
-    // Add logo
-    if (getSetting('_mapLogo')) {
-      $('#logo').append('<img src="' + getSetting('_mapLogo') + '" />');
-      $('#top').css('height', '60px');
-    } else {
-      $('#logo').css('display', 'none');
-      $('#header').css('padding-top', '25px');
-    }
-
-    // Load tiles
-    addBaseMap();
 
     // Add zoom controls if needed
     if (getSetting('_zoomControls') !== 'on') {
